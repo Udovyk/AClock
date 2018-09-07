@@ -1,7 +1,8 @@
-package udovyk.com.aclock
+package udovyk.com.aclock.presentation.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import udovyk.com.aclock.R
 
 class MainActivity : AppCompatActivity() {
 
