@@ -2,9 +2,8 @@ package udovyk.com.aclock.presentation.alarm_list
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import udovyk.com.aclock.R
 import udovyk.com.aclock.databinding.AlarmListBinding
 import udovyk.com.aclock.ext.getViewModelOfType
 import udovyk.com.aclock.presentation.base.BaseFragment
@@ -39,8 +38,9 @@ class AlarmListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textView.text = "well, it works =)"
+        //binding.textView.text = "well, it works =)"
     }
+
 
     //endregion
 

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AClock</string>
+
+    //menu
+    <string name="sound">sound</string>
+
 </resources>
