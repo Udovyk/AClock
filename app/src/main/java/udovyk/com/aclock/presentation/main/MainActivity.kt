@@ -1,13 +1,13 @@
 package udovyk.com.aclock.presentation.main
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.res.ColorStateList
 import android.databinding.DataBindingUtil
-import android.graphics.drawable.Icon
-import android.net.Uri
 import android.os.Bundle
 import android.support.design.bottomappbar.BottomAppBar
 import android.view.Menu
-import com.jakewharton.rxbinding2.view.RxView
+import android.view.MenuItem
+import org.jetbrains.anko.toast
 import udovyk.com.aclock.R
 import udovyk.com.aclock.databinding.MainActivityBinding
 import udovyk.com.aclock.ext.getViewModelOfType
@@ -40,6 +40,29 @@ class MainActivity : BaseActivity() {
         return true
     }
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.itemId) {
+            R.id.menu_settings -> toast("opens settings")
+            R.id.menu_search -> toast("searching..")
+        }
+        return true
+    }
+
+    override fun onBackPressed() {
+        binding.run {
+            when (bottomAppBar.fabAlignmentMode) {
+
+                BottomAppBar.FAB_ALIGNMENT_MODE_CENTER -> {
+                    super.onBackPressed()
+                }
+                BottomAppBar.FAB_ALIGNMENT_MODE_END -> {
+                    viewModel.backToList()
+                    setBottomAppBarCenterMode()
+                }
+            }
+        }
+    }
+
     //endregion
 
     //region fun
@@ -47,18 +70,16 @@ class MainActivity : BaseActivity() {
     private fun clicks() {
         binding.run {
             fab.setOnClickListener {
-                bottomAppBar.replaceMenu(R.menu.set_alarm_menu)
                 when (bottomAppBar.fabAlignmentMode) {
 
                     BottomAppBar.FAB_ALIGNMENT_MODE_CENTER -> {
                         viewModel.openSetAlarmScreen()
-                        bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                        fab.setImageDrawable(getDrawable(R.drawable.ic_check_white_24dp))
+                        setBottomAppBarEndMode()
                     }
                     BottomAppBar.FAB_ALIGNMENT_MODE_END -> {
                         viewModel.backToList()
-                        bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                        fab.setImageDrawable(getDrawable(R.drawable.ic_add_white_24dp))
+                        toast("alarm added")
+                        setBottomAppBarCenterMode()
                     }
                 }
                 //add code for animation
@@ -66,10 +87,31 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    private fun setBottomAppBarEndMode() {
+        binding.run {
+            bottomAppBar.replaceMenu(R.menu.set_alarm_menu)
+            bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+            fab.setImageDrawable(getDrawable(R.drawable.ic_check_white_24dp))
+            fab.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.fabColorDone))
+        }
+    }
+
+    private fun setBottomAppBarCenterMode() {
+        binding.run {
+            bottomAppBar.replaceMenu(R.menu.menu_main)
+            bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+            fab.setImageDrawable(getDrawable(R.drawable.ic_add_white_24dp))
+            fab.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.fabColorAdd))
+        }
+    }
+
     private fun setActionBar() {
         val bottomAppBar = binding.bottomAppBar
         bottomAppBar.navigationIcon = null
         setSupportActionBar(bottomAppBar)
+        //menu and fab initial values
+        // bottomAppBar.replaceMenu(R.menu.menu_main)
+        binding.fab.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.fabColorAdd))
     }
 
     //endregion

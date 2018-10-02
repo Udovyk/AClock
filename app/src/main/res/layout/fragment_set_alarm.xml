@@ -8,7 +8,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorSetAlarmBackgroung">
+        android:background="@color/colorSetAlarmBackground">
 
 
         <Button
@@ -23,7 +23,7 @@
             android:fontFamily="serif-monospace"
             android:lineSpacingExtra="18sp"
             android:text="Set Alarm"
-            android:textColor="@android:color/background_light"
+            android:textColor="@android:color/background_dark"
             android:textSize="18sp"
             android:textStyle="bold"
             android:typeface="serif"

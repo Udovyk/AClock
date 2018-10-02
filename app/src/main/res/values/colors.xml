@@ -3,8 +3,8 @@
     <color name="colorPrimary">#2d6fb6</color>
     <color name="colorPrimaryDark">#043f9e</color>
     <color name="colorAccent">#71cbd6</color>
-    <color name="fabColorAdd">#1f211e</color>
-    <color name="fabColorDone">#43931b</color>
+    <color name="fabColorAdd">#ffb759</color>
+    <color name="fabColorDone">#5dc728</color>
     <color name="colorBackground">#b9eaef</color>
-    <color name="colorSetAlarmBackgroung">#01a6cf</color>
+    <color name="colorSetAlarmBackground">#e6f8fc</color>
 </resources>
