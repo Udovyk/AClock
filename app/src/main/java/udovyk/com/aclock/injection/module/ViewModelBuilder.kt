@@ -9,6 +9,7 @@ import udovyk.com.aclock.injection.ViewModelFactory
 import udovyk.com.aclock.injection.annotation.ViewModelKey
 import udovyk.com.aclock.presentation.alarm_list.AlarmListViewModel
 import udovyk.com.aclock.presentation.main.MainViewModel
+import udovyk.com.aclock.presentation.set_alarm.SetAlarmViewModel
 
 @Module
 interface ViewModelBuilder {
@@ -24,5 +25,10 @@ interface ViewModelBuilder {
     @IntoMap
     @ViewModelKey(AlarmListViewModel::class)
     fun bindAlarmListViewModel(viewModel: AlarmListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SetAlarmViewModel::class)
+    fun bindSetAlarmViewModel(viewModel: SetAlarmViewModel): ViewModel
 
 }

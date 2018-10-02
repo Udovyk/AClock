@@ -13,8 +13,10 @@ import ru.terrakok.cicerone.android.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import udovyk.com.aclock.R
 import udovyk.com.aclock.common.ALARM_LIST_SCREEN
+import udovyk.com.aclock.common.SET_ALARM_SCREEN
 import udovyk.com.aclock.injection.ViewModelFactory
 import udovyk.com.aclock.presentation.alarm_list.AlarmListFragment
+import udovyk.com.aclock.presentation.set_alarm.SetAlarmFragment
 import javax.inject.Inject
 
 abstract class BaseActivity : DaggerAppCompatActivity() {
@@ -33,6 +35,7 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
             override fun createFragment(screenKey: String?, data: Any?): Fragment? =
                 when (screenKey) {
                     ALARM_LIST_SCREEN -> AlarmListFragment()
+                    SET_ALARM_SCREEN -> SetAlarmFragment()
                     else -> throw Throwable("Unknown screen")
                 }
 

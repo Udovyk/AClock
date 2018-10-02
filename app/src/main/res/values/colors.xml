@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4faf8e</color>
-    <color name="colorPrimaryDark">#2eab94</color>
-    <color name="colorAccent">#5da8b1</color>
-    <color name="colorBackground">#c9eade</color>
+    <color name="colorPrimary">#2d6fb6</color>
+    <color name="colorPrimaryDark">#043f9e</color>
+    <color name="colorAccent">#71cbd6</color>
+    <color name="fabColorAdd">#1f211e</color>
+    <color name="fabColorDone">#43931b</color>
+    <color name="colorBackground">#b9eaef</color>
+    <color name="colorSetAlarmBackgroung">#01a6cf</color>
 </resources>

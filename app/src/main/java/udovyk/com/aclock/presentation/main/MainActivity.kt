@@ -2,10 +2,12 @@ package udovyk.com.aclock.presentation.main
 
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
+import android.graphics.drawable.Icon
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.bottomappbar.BottomAppBar
 import android.view.Menu
-import kotlinx.android.synthetic.main.fragment_alarm_list.*
+import com.jakewharton.rxbinding2.view.RxView
 import udovyk.com.aclock.R
 import udovyk.com.aclock.databinding.MainActivityBinding
 import udovyk.com.aclock.ext.getViewModelOfType
@@ -28,20 +30,46 @@ class MainActivity : BaseActivity() {
         setActionBar()
         viewModel.setInitScreen()
 
+        clicks()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.bottomappbar_menu, menu)
+        inflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     //endregion
 
     //region fun
+
+    private fun clicks() {
+        binding.run {
+            fab.setOnClickListener {
+                bottomAppBar.replaceMenu(R.menu.set_alarm_menu)
+                when (bottomAppBar.fabAlignmentMode) {
+
+                    BottomAppBar.FAB_ALIGNMENT_MODE_CENTER -> {
+                        viewModel.openSetAlarmScreen()
+                        bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                        fab.setImageDrawable(getDrawable(R.drawable.ic_check_white_24dp))
+                    }
+                    BottomAppBar.FAB_ALIGNMENT_MODE_END -> {
+                        viewModel.backToList()
+                        bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+                        fab.setImageDrawable(getDrawable(R.drawable.ic_add_white_24dp))
+                    }
+                }
+                //add code for animation
+            }
+        }
+    }
+
     private fun setActionBar() {
         val bottomAppBar = binding.bottomAppBar
-       setSupportActionBar(bottomAppBar)
+        bottomAppBar.navigationIcon = null
+        setSupportActionBar(bottomAppBar)
     }
 
     //endregion
