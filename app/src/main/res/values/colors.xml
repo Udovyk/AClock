@@ -2,9 +2,9 @@
 <resources>
     <color name="colorPrimary">#2d6fb6</color>
     <color name="colorPrimaryDark">#043f9e</color>
-    <color name="colorAccent">#71cbd6</color>
-    <color name="fabColorAdd">#ffb759</color>
-    <color name="fabColorDone">#5dc728</color>
-    <color name="colorBackground">#b9eaef</color>
-    <color name="colorSetAlarmBackground">#e6f8fc</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="fabColorAdd">#050505</color>
+    <color name="fabColorDone">#3cae03</color>
+    <color name="colorBackground">#ffffff</color>
+    <color name="colorSetAlarmBackground">#ffffff</color>
 </resources>
