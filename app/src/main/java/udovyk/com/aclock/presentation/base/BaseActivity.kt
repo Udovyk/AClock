@@ -2,7 +2,6 @@ package udovyk.com.aclock.presentation.base
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import dagger.android.support.DaggerAppCompatActivity
@@ -15,8 +14,8 @@ import udovyk.com.aclock.R
 import udovyk.com.aclock.common.ALARM_LIST_SCREEN
 import udovyk.com.aclock.common.SET_ALARM_SCREEN
 import udovyk.com.aclock.injection.ViewModelFactory
-import udovyk.com.aclock.presentation.alarm_list.AlarmListFragment
-import udovyk.com.aclock.presentation.set_alarm.SetAlarmFragment
+import udovyk.com.aclock.presentation.alarmlist.AlarmListFragment
+import udovyk.com.aclock.presentation.setalarm.SetAlarmFragment
 import javax.inject.Inject
 
 abstract class BaseActivity : DaggerAppCompatActivity() {

@@ -19,6 +19,6 @@ class MainViewModel @Inject constructor(screenRouterManager: ScreenRouterManager
     }
 
     fun backToList() {
-        setRootScreen(ALARM_LIST_SCREEN)
+        onBackPressed()
     }
 }

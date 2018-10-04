@@ -1,25 +1,26 @@
-package udovyk.com.aclock.presentation.alarm_list
+package udovyk.com.aclock.presentation.setalarm
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.view.*
-import udovyk.com.aclock.R
-import udovyk.com.aclock.databinding.AlarmListBinding
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import udovyk.com.aclock.databinding.SetAlarmBinding
 import udovyk.com.aclock.ext.getViewModelOfType
 import udovyk.com.aclock.presentation.base.BaseFragment
 
-class AlarmListFragment : BaseFragment() {
+class SetAlarmFragment : BaseFragment() {
 
     companion object {
-        fun newInstance(): AlarmListFragment {
-            val fragment = AlarmListFragment()
+        fun newInstance(): SetAlarmFragment {
+            val fragment = SetAlarmFragment()
             return fragment
         }
     }
 
     //region var
-    private lateinit var viewModel: AlarmListViewModel
-    private lateinit var binding: AlarmListBinding
+    private lateinit var viewModel: SetAlarmViewModel
+    private lateinit var binding: SetAlarmBinding
 
     //endregion
 
@@ -31,20 +32,25 @@ class AlarmListFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = AlarmListBinding.inflate(inflater, container, false)
+        binding = SetAlarmBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //binding.textView.text = "well, it works =)"
+
     }
 
 
     //endregion
 
     //region fun
+
+
+    private fun listenEvents() {
+
+    }
 
     //endregion
 

@@ -22,8 +22,6 @@
             app:backgroundTint="@color/colorPrimary"
             app:fabAlignmentMode="center"
             app:fabCradleRoundedCornerRadius="10dp"
-            app:hideOnScroll="true"
-            app:layout_scrollFlags="scroll|enterAlways"
             android:animateLayoutChanges="true"
             />
 

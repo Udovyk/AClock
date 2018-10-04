@@ -1,4 +1,4 @@
-package udovyk.com.aclock.presentation.set_alarm
+package udovyk.com.aclock.presentation.setalarm
 
 import udovyk.com.aclock.presentation.base.BaseViewModel
 import udovyk.com.aclock.presentation.base.route.ScreenRouterManager

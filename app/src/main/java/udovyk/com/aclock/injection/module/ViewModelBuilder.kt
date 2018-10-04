@@ -7,9 +7,9 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import udovyk.com.aclock.injection.ViewModelFactory
 import udovyk.com.aclock.injection.annotation.ViewModelKey
-import udovyk.com.aclock.presentation.alarm_list.AlarmListViewModel
+import udovyk.com.aclock.presentation.alarmlist.AlarmListViewModel
 import udovyk.com.aclock.presentation.main.MainViewModel
-import udovyk.com.aclock.presentation.set_alarm.SetAlarmViewModel
+import udovyk.com.aclock.presentation.setalarm.SetAlarmViewModel
 
 @Module
 interface ViewModelBuilder {

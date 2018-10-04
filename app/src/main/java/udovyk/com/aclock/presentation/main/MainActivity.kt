@@ -11,6 +11,8 @@ import android.view.Menu
 import android.view.MenuItem
 import org.jetbrains.anko.toast
 import udovyk.com.aclock.R
+import udovyk.com.aclock.bus.RxBus
+import udovyk.com.aclock.bus.events.AddAlarmEvent
 import udovyk.com.aclock.databinding.MainActivityBinding
 import udovyk.com.aclock.ext.getViewModelOfType
 import udovyk.com.aclock.presentation.base.BaseActivity
@@ -79,10 +81,15 @@ class MainActivity : BaseActivity() {
                         setBottomAppBarEndMode()
                     }
                     BottomAppBar.FAB_ALIGNMENT_MODE_END -> {
+                        RxBus.publish(AddAlarmEvent())
+
                         toast("added")
                         binding.fab.hide()
                         viewModel.backToList()
                         setBottomAppBarCenterMode()
+
+                        //todo test
+
                     }
                 }
                 //add code for animation
