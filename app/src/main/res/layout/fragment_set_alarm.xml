@@ -11,25 +11,27 @@
         android:background="@color/colorSetAlarmBackground">
 
 
-        <Button
-            android:id="@+id/btn_set_alarm"
-            style="@android:style/Widget.DeviceDefault.Light.Button"
+        <ImageView
+            android:id="@+id/im_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="serif-monospace"
-            android:lineSpacingExtra="18sp"
-            android:text="Set Alarm"
-            android:textColor="@android:color/background_dark"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            tools:text="9, 02"
+            android:textAllCaps="false"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:typeface="serif"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/im_date"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/im_date" />
     </android.support.constraint.ConstraintLayout>
 </layout>
