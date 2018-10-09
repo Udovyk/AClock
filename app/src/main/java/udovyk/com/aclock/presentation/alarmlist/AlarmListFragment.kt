@@ -8,7 +8,7 @@ import android.view.*
 import io.reactivex.rxkotlin.plusAssign
 import udovyk.com.aclock.bus.RxBus
 import udovyk.com.aclock.bus.events.AddAlarmEvent
-import udovyk.com.aclock.data.AlarmModel
+import udovyk.com.aclock.data.AlarmEntity
 import udovyk.com.aclock.databinding.AlarmListBinding
 import udovyk.com.aclock.ext.getViewModelOfType
 import udovyk.com.aclock.presentation.base.BaseFragment
@@ -38,7 +38,7 @@ class AlarmListFragment : BaseFragment() {
 
         disposable += RxBus.listen(AddAlarmEvent::class.java).subscribe{
             Log.d("TEST" , "added")
-            adapter.add(AlarmModel("1:00", "mn, fr"))
+            adapter.add(AlarmEntity("1:00", "mn, fr"))
         }
     }
 
