@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.rxkotlin.plusAssign
+import udovyk.com.aclock.common.getMonth
 import udovyk.com.aclock.databinding.SetAlarmBinding
 import udovyk.com.aclock.ext.getViewModelOfType
 import udovyk.com.aclock.presentation.base.BaseFragment
@@ -43,7 +44,7 @@ class SetAlarmFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        initCalendar()
         clicks()
 
 
@@ -67,11 +68,16 @@ class SetAlarmFragment : BaseFragment() {
         dialog.listener = object : DateDialog.DatePickerListener {
             override fun onDatePicked(year: Int, month: Int, day: Int) {
                 calendar.set(year, month, day)
-                val pickedData = day.toString() + ", " + month.toString()
+                val pickedData = day.toString() + ", " + getMonth(month)
                 binding.tvDate.text = pickedData
             }
         }
         dialog.show(childFragmentManager, DateDialog.TAG)
+    }
+
+    private fun initCalendar() {
+        val pickedData = (calendar.get(Calendar.DAY_OF_MONTH) + 1).toString() + ", " + getMonth(calendar.get(Calendar.MONTH))
+        binding.tvDate.text = pickedData
     }
 
     private fun listenEvents() {
