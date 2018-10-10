@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_alarm.view.*
 import udovyk.com.aclock.R
-import udovyk.com.aclock.data.AlarmModel
+import udovyk.com.aclock.data.AlarmEntity
 
 class AlarmAdapter : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
-    private val list = mutableListOf<AlarmModel>()
+    private val list = mutableListOf<AlarmEntity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_alarm, parent, false)
@@ -19,16 +19,18 @@ class AlarmAdapter : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvTime.text = list.get(position).time
-        holder.tvDays.text = list.get(position).days
+
+        //TODO REFACTOR according to model
+        holder.tvTime.text = list.get(position).alarmHours.toString() + " : " + list.get(position).alarmMinutes.toString()
+        //holder.tvDays.text = list.get(position).days
     }
 
-    fun add(item: AlarmModel) {
+    fun add(item: AlarmEntity) {
         list.add(item)
         notifyDataSetChanged()
     }
 
-    fun allAll(items: List<AlarmModel>) {
+    fun addAll(items: List<AlarmEntity>) {
         list.addAll(items)
         notifyDataSetChanged()
     }
