@@ -1,12 +1,16 @@
 package udovyk.com.aclock.presentation.setalarm
 
 import android.arch.lifecycle.ViewModelProviders
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.rxkotlin.plusAssign
+import udovyk.com.aclock.bus.RxBus
+import udovyk.com.aclock.bus.events.AddAlarmEvent
 import udovyk.com.aclock.common.getMonth
 import udovyk.com.aclock.databinding.SetAlarmBinding
 import udovyk.com.aclock.ext.getViewModelOfType
@@ -17,6 +21,7 @@ import java.util.*
 class SetAlarmFragment : BaseFragment() {
 
     companion object {
+        private val TAG = "SetAlarmFragment"
         fun newInstance(): SetAlarmFragment {
             val fragment = SetAlarmFragment()
             return fragment
@@ -47,6 +52,7 @@ class SetAlarmFragment : BaseFragment() {
         initCalendar()
         clicks()
 
+        listenEvents()
 
     }
 
@@ -54,6 +60,21 @@ class SetAlarmFragment : BaseFragment() {
     //endregion
 
     //region fun
+    private fun listenEvents() {
+        disposable += RxBus.listen(AddAlarmEvent::class.java).subscribe {
+            Log.d(TAG, ": AddAlarmEvent catch")
+            binding.run {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    viewModel.setAlarm(timePicker.minute.toString(), timePicker.hour.toString())
+                } else {
+                    viewModel.setAlarm(timePicker.currentHour.toString(), timePicker.currentHour.toString())
+                }
+            }
+            Log.d(TAG, ": alarm added to db")
+
+        }
+
+    }
 
     private fun clicks() {
         binding.run {
@@ -80,9 +101,7 @@ class SetAlarmFragment : BaseFragment() {
         binding.tvDate.text = pickedData
     }
 
-    private fun listenEvents() {
 
-    }
 
     //endregion
 

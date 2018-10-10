@@ -21,7 +21,7 @@ class AlarmAdapter : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         //TODO REFACTOR according to model
-        holder.tvTime.text = list.get(position).alarmHours
+        holder.tvTime.text = list.get(position).alarmHours.toString() + " : " + list.get(position).alarmMinutes.toString()
         //holder.tvDays.text = list.get(position).days
     }
 
@@ -30,7 +30,7 @@ class AlarmAdapter : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    fun allAll(items: List<AlarmEntity>) {
+    fun addAll(items: List<AlarmEntity>) {
         list.addAll(items)
         notifyDataSetChanged()
     }

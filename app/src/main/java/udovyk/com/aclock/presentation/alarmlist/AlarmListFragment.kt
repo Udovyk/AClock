@@ -1,13 +1,11 @@
 package udovyk.com.aclock.presentation.alarmlist
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.*
-import io.reactivex.rxkotlin.plusAssign
-import udovyk.com.aclock.bus.RxBus
-import udovyk.com.aclock.bus.events.AddAlarmEvent
 import udovyk.com.aclock.data.AlarmEntity
 import udovyk.com.aclock.databinding.AlarmListBinding
 import udovyk.com.aclock.ext.getViewModelOfType
@@ -18,6 +16,7 @@ class AlarmListFragment : BaseFragment() {
     private val adapter = AlarmAdapter()
 
     companion object {
+        private val TAG = "AlarmListFragment"
         fun newInstance(): AlarmListFragment {
             val fragment = AlarmListFragment()
             return fragment
@@ -28,6 +27,15 @@ class AlarmListFragment : BaseFragment() {
     private lateinit var viewModel: AlarmListViewModel
     private lateinit var binding: AlarmListBinding
 
+    val alarmsObsever: Observer<List<AlarmEntity>> = Observer {
+
+        if (it != null && it.isNotEmpty()) {
+            adapter.clear()
+            adapter.addAll(it)
+            Log.d(TAG, ": alarms in db exists, added to adapter")
+        }
+    }
+
     //endregion
 
 
@@ -36,10 +44,9 @@ class AlarmListFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModelFactory).getViewModelOfType()
 
-        disposable += RxBus.listen(AddAlarmEvent::class.java).subscribe{
-            Log.d("TEST" , "added")
-            adapter.add(AlarmEntity("1:00", "mn, fr"))
-        }
+        viewModel.alarmsLiveData.observe(this, alarmsObsever)
+
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -49,10 +56,8 @@ class AlarmListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initRecyclerView()
-
-
+        viewModel.getAllAlarms()
 
     }
 
@@ -60,7 +65,6 @@ class AlarmListFragment : BaseFragment() {
     //endregion
 
     //region fun
-
 
 
     private fun initRecyclerView() {

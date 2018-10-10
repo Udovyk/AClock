@@ -10,7 +10,6 @@ data class AlarmEntity(
         var alarmMinutes: String? = null,
         var alarmHours: String? = null,
         var isAlarmEnabled: Boolean = true,
-
         var mondayCheck: Boolean = true,
         var tuesdayCheck: Boolean = true,
         var wednesdayCheck: Boolean = true,

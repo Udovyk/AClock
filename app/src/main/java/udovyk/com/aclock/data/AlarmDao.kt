@@ -2,26 +2,27 @@ package udovyk.com.aclock.data
 
 import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
+import io.reactivex.Flowable
 
 @Dao
 interface AlarmDao {
 
 //insert
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAlarm(alarmEntity: AlarmEntity)
+    fun insertAlarm(alarmEntity: AlarmEntity): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(alarmList: List<AlarmEntity>)
 
 //get
     @Query("SELECT * FROM alarms WHERE id = :id")
-    fun getAlarmById(id: Int): LiveData<AlarmEntity>
+    fun getAlarmById(id: Int): Flowable<AlarmEntity>
 
     @Query("SELECT COUNT(*) FROM alarms")
     fun getCount(): Int
 
     @Query("SELECT * FROM alarms")
-    fun getAllAlarms(): LiveData<List<AlarmEntity>>
+    fun getAllAlarms(): Flowable<List<AlarmEntity>>
 
 //delete
     @Delete
