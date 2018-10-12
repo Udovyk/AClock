@@ -81,9 +81,15 @@ class MainActivity : BaseActivity() {
                         setBottomAppBarEndMode()
                     }
                     BottomAppBar.FAB_ALIGNMENT_MODE_END -> {
-                        RxBus.publish(AddAlarmEvent())
+                        RxBus.publish( AddAlarmEvent())
 
+                        //todo test now
+                        viewModel.startAlarm()
                         toast("added")
+
+
+                        //testend
+
                         binding.fab.hide()
                         viewModel.backToList()
                         setBottomAppBarCenterMode()

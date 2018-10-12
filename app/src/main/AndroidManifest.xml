@@ -17,6 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presentation.main.AlarmRingingActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="sensorPortrait"
+            android:showOnLockScreen="true" />
     </application>
 
 </manifest>

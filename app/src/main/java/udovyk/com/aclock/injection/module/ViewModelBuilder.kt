@@ -8,6 +8,8 @@ import dagger.multibindings.IntoMap
 import udovyk.com.aclock.injection.ViewModelFactory
 import udovyk.com.aclock.injection.annotation.ViewModelKey
 import udovyk.com.aclock.presentation.alarmlist.AlarmListViewModel
+import udovyk.com.aclock.presentation.main.AlarmRingingActivity
+import udovyk.com.aclock.presentation.main.AlarmRingingViewModel
 import udovyk.com.aclock.presentation.main.MainViewModel
 import udovyk.com.aclock.presentation.setalarm.SetAlarmViewModel
 
@@ -30,5 +32,10 @@ interface ViewModelBuilder {
     @IntoMap
     @ViewModelKey(SetAlarmViewModel::class)
     fun bindSetAlarmViewModel(viewModel: SetAlarmViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AlarmRingingViewModel::class)
+    fun bindAlarmRingingViewModel(viewModel: AlarmRingingViewModel): ViewModel
 
 }
