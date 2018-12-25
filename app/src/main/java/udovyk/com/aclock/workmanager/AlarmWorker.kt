@@ -24,7 +24,7 @@ class AlarmWorker(
     override fun doWork(): Worker.Result {
         Log.d(TAG, "doWork: start")
 
-        initAlarmActivity(applicationContext, inputData.inputData.getString("id"))
+        initAlarmActivity(applicationContext, inputData.getString("id"))
 
         Log.d(TAG, "doWork: end")
 
